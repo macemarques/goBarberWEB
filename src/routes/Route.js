@@ -5,12 +5,14 @@ import { Route, Redirect } from 'react-router-dom';
 import AuthLayout from '~/pages/_layouts/auth';
 import DefaultLayout from '~/pages/_layouts/deafult';
 
+import { store } from '~/store';
+
 export default function RouteWrapper({
   component: Component,
   isPrivate = false,
   ...rest
 }) {
-  const signed = false;
+  const { signed } = store.getState().auth;
 
   if (!signed && isPrivate) {
     return <Redirect to="/" />;
@@ -23,9 +25,11 @@ export default function RouteWrapper({
 
   return (
     <Route
+      // eslint-disable-next-line react/jsx-props-no-spreading
       {...rest}
       render={props => (
         <Layout>
+          {/* eslint-disable-next-line react/jsx-props-no-spreading */}
           <Component {...props} />
         </Layout>
       )}

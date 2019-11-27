@@ -1,8 +1,11 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
+
 import { Link } from 'react-router-dom';
 import { Form, Input } from '@rocketseat/unform';
 import * as Yup from 'yup';
 import logo from '~/assets/goBarberLOGO.svg';
+import { signUpRequest } from '~/store/modules/auth/actions';
 
 const schema = Yup.object().shape({
   name: Yup.string()
@@ -12,13 +15,16 @@ const schema = Yup.object().shape({
     .email('Insira um e-mail válido')
     .required('Preencha o seu melhor e-mail'),
   password: Yup.string()
-    .min(8, 'No mínimo 8 dígitos')
+    .min(8, 'Senha deve ter no mínimo 8 caracteres.')
     .required('Insira sua senha secreta'),
 });
 
 export default function SignUp() {
-  function handleSubmit(data) {
-    console.tron.log(data);
+  const dispatch = useDispatch();
+
+  function handleSubmit({ name, email, password }) {
+    // console.tron.log(data);
+    dispatch(signUpRequest(name, email, password));
   }
   return (
     <>
