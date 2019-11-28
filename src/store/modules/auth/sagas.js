@@ -15,6 +15,7 @@ export function* signIn({ payload }) {
     });
 
     const { token, user } = response.data;
+
     if (!user.provider) {
       toast.error('User is not a provider.');
       // Acho que deveria ter pois após testar um usuario que nao é
@@ -23,6 +24,8 @@ export function* signIn({ payload }) {
       // acima ^
       return;
     }
+
+    api.defaults.headers.Authorization = `Bearer ${token}`;
 
     yield put(signInSuccess(token, user));
 
@@ -47,7 +50,19 @@ export function* signUp({ payload }) {
   }
 }
 
+export function setToken({ payload }) {
+  if (!payload) {
+    return;
+  }
+  const { token } = payload.auth;
+
+  if (token) {
+    api.defaults.headers.Authorization = `Bearer ${token}`;
+  }
+}
+
 export default all([
+  takeLatest('persist/REHYDRATE', setToken),
   takeLatest('@auth/SIGN_IN_REQUEST', signIn),
   takeLatest('@auth/SIGN_UP_REQUEST', signUp),
 ]);
