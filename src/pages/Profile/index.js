@@ -8,7 +8,6 @@ import { updateProfileRequest } from '~/store/modules/user/actions';
 
 import AvatarInput from './AvatarInput';
 import { Container } from './styles';
-import AvatarInput from './AvatarInput';
 
 export default function Profile() {
   const profile = useSelector(state => state.user.profile);

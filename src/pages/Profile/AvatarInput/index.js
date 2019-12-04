@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import React, { useState, useRef, useEffect } from 'react';
 
 import { useField } from '@rocketseat/unform';
@@ -50,28 +49,6 @@ export default function AvatarInput() {
           data-file={file}
           onChange={handleChange}
           ref={ref}
-=======
-import React, { useState } from 'react';
-import { useField } from '@rocketseat/unform';
-
-import { Container } from './styles';
-
-const { defaultValue, registerField } = useField();
-
-const [preview, setPreview] = useState();
-
-export default function AvatarInput() {
-  function handleChange(e) {}
-  return (
-    <Container>
-      <label htmlFor="avatar">
-        <img src="" alt="" />
-        <input
-          id="avatar"
-          type="text"
-          accept="image/*"
-          onChange={handleChange}
->>>>>>> 75f2603fc8e804ce298b1f0f3b864307b6a6f4a7
         />
       </label>
     </Container>
