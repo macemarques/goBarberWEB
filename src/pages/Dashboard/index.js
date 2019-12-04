@@ -34,7 +34,9 @@ export default function Dashboard() {
 
     const date = range.map(hour => {
       const checkDate = setSeconds(setMinutes(setHours(date, hour), 0), 0);
-      const compareDate = utcToZonedTime(date, timezone);
+      const compareDate = utcToZonedTime(checkDate, timezone);
+
+      return {};
     });
   });
 

@@ -6,6 +6,7 @@ import { signOut } from '~/store/modules/auth/actions';
 
 import { updateProfileRequest } from '~/store/modules/user/actions';
 
+import AvatarInput from './AvatarInput';
 import { Container } from './styles';
 import AvatarInput from './AvatarInput';
 
