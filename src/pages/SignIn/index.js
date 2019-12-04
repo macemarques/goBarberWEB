@@ -11,7 +11,7 @@ import logo from '~/assets/goBarberLOGO.svg';
 const schema = Yup.object().shape({
   email: Yup.string()
     .email('Insira um e-mail válido.')
-    .required('Preencha o seu melhor e-mail.'),
+    .required('Preencha o seu e-mail cadastrado.'),
   password: Yup.string()
     .min(8, 'Senha deve ter no mínimo 8 caracteres.')
     .required('A senha é obrigatória.'),

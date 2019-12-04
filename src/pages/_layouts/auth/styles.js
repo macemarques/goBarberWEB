@@ -10,6 +10,7 @@ export const Wrapper = styled.div`
   justify-content: center;
   align-items: center;
 `;
+
 export const Content = styled.div`
   width: 100%;
   max-width: 315px;
